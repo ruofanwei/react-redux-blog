@@ -1,10 +1,8 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import {setAuthToken} from '../../utils'
 import {useHistory} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  setUser,
   setErrorMessage,
   register
 } from "../../redux/reducers/userReducer";

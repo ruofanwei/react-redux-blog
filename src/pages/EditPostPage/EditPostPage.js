@@ -7,7 +7,6 @@ import {
   editPost,
   setErrorMessage,
 } from "../../redux/reducers/postReducer";
-import { getUser, setUser } from "../../redux/reducers/userReducer";
 import {useDispatch, useSelector} from 'react-redux'
 const Form = styled.form`
   width: 60%;
@@ -100,7 +99,6 @@ export default function EditPostPage(){
   const errorMessage = useSelector((store) => store.posts.errorMessage);
   const history = useHistory();
   const {id} = useParams()
-  const user = useSelector((store) => store.user.userData);
   const dispatch = useDispatch();
   const isLoading = useSelector(store => store.posts.isLoadingPost)
   const setError = () => dispatch(setErrorMessage(null));

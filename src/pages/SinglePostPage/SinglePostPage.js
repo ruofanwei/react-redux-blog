@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, { useEffect} from "react";
 import styled from "styled-components";
 import { useParams, useHistory } from "react-router-dom";
-import {getSinglePost} from '../../WebAPI'
 import {getPost, setPost, deletePost} from "../../redux/reducers/postReducer";
 import {useDispatch, useSelector} from 'react-redux'
 const Root = styled.div`

@@ -1,8 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
-import {getPosts, getPaginatePosts} from "../../redux/reducers/postReducer";
+import {getPosts} from "../../redux/reducers/postReducer";
 import {useDispatch, useSelector} from 'react-redux'
 
 const Root = styled.div`

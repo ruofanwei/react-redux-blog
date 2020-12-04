@@ -1,9 +1,9 @@
-import React, {useContext} from "react";
+import React from "react";
 import styled from "styled-components";
 import {Link, useLocation, useHistory} from "react-router-dom";
 import {setAuthToken} from '../../utils'
 import { useSelector, useDispatch } from 'react-redux';
-import {setUser, setIsLoadingUser} from "../../redux/reducers/userReducer";
+import {setUser} from "../../redux/reducers/userReducer";
 const HeaderContainer = styled.nav`
   height: 64px;
   display: flex;

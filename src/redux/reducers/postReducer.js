@@ -1,11 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import CreateNewPostPage from '../../pages/CreateNewPostPage';
 import {
   getSinglePost,
   releaseNewPost,
-  getPosts as getPostsAPI,
   getPaginatePosts,
-  getTotalPages,
   editPost as editPostAPI,
   deletePost as deletePostAPI,
 } from "../../WebAPI";

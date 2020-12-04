@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import LoginPage from '../../pages/LoginPage';
 import RegisterPage from '../../pages/RegisterPage';
@@ -8,7 +8,7 @@ import HomePage from '../../pages/HomePage';
 import EditPostPage from '../../pages/EditPostPage';
 import CreateNewPostPage from '../../pages/CreateNewPostPage';
 import Header from '../Header';
-import {getUser, setIsLoadingUser} from "../../redux/reducers/userReducer";
+import {getUser} from "../../redux/reducers/userReducer";
 import {useDispatch, useSelector} from 'react-redux'
 import {
   HashRouter as Router,

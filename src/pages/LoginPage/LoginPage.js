@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState,  useEffect } from "react";
 import styled from "styled-components";
-import {setAuthToken} from '../../utils'
 import {useHistory} from "react-router-dom";
 import {login, setErrorMessage} from "../../redux/reducers/userReducer";
 import { useDispatch, useSelector } from 'react-redux';
