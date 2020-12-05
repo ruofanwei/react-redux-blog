@@ -5,17 +5,19 @@ import {
   getPaginatePosts,
   editPost as editPostAPI,
   deletePost as deletePostAPI,
+  getUser
 } from "../../WebAPI";
 import { createPaginate } from '../../utils';
 export const postReducer = createSlice({
-  name: 'posts',
+  name: "posts",
   initialState: {
     isLoadingPost: false,
     post: null,
-    errorMessage:null,
+    author: null,
+    errorMessage: null,
     newPostResponse: null,
     posts: [],
-    paginate: []
+    paginate: [],
   },
   reducers: {
     setIsLoadingPost: (state, action) => {
@@ -33,22 +35,34 @@ export const postReducer = createSlice({
     setPosts: (state, action) => {
       state.posts = action.payload;
     },
+    setAuthor: (state, action) => {
+      state.author = action.payload;
+    },
     setPaginate: (state, action) => {
       state.paginate = action.payload;
-    }
+    },
   },
 });
 
-export const { setIsLoadingPost, setPost, setNewPostResponse, setErrorMessage, setPosts, setPaginate } = postReducer.actions;
+export const {
+  setIsLoadingPost,
+  setPost,
+  setNewPostResponse,
+  setErrorMessage,
+  setPosts,
+  setAuthor,
+  setPaginate,
+} = postReducer.actions;
 
 
 export const getPost = id => dispatch => {
   dispatch(setIsLoadingPost(true));
-  return getSinglePost(id).then(post => {
-     dispatch(setPost(post[0]));
-     dispatch(setIsLoadingPost(false));
-     return post[0]
-  })
+  return getSinglePost(id)
+    .then((post) => {
+      dispatch(setPost(post[0]));
+      dispatch(setAuthor(post[0].user));
+      dispatch(setIsLoadingPost(false));
+    })
 };
 
 export const newPost = (title, content) => (dispatch) => {

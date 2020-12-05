@@ -141,6 +141,7 @@ export default function SinglePostPage(){
   const history = useHistory();
   const isLoading = useSelector(store => store.posts.isLoadingPost)
   const post = useSelector(store => store.posts.post)
+  const author = useSelector((store) => store.posts.author);
   const user = useSelector((store) => store.user.userData);
   useEffect(() => {
     dispatch(getPost(id));
@@ -157,27 +158,28 @@ export default function SinglePostPage(){
     return (
       <>
         <Root>
-          {isLoading ? (<LoadMessage>Loading...</LoadMessage>) :
-          <>
-          <PostTitle>{post && post.title}</PostTitle>
-          <CreateInfo>
-            <PostUser>Created from {user && user.username}</PostUser>
-            <PostDate>
-              at {post && new Date(post.createdAt).toLocaleString()}
-            </PostDate>
-          </CreateInfo>
-          <Content>{post && post.body}</Content>
-          {user && post && user.id === post.userId && (
-            <EditContainer>
-              <Button onClick={() => handleDelete(id)}>Delete</Button>
-              <Button onClick={() => handleEdit(id)}>Edit</Button>
-            </EditContainer>
+          {isLoading ? (
+            <LoadMessage>Loading...</LoadMessage>
+          ) : (
+            <>
+              <PostTitle>{post && post.title}</PostTitle>
+              <CreateInfo>
+                <PostUser>Created from {post && author.nickname}</PostUser>
+                <PostDate>
+                  at {post && new Date(post.createdAt).toLocaleString()}
+                </PostDate>
+              </CreateInfo>
+              <Content>{post && post.body}</Content>
+              {user && post && user.id === post.userId && (
+                <EditContainer>
+                  <Button onClick={() => handleDelete(id)}>Delete</Button>
+                  <Button onClick={() => handleEdit(id)}>Edit</Button>
+                </EditContainer>
+              )}
+            </>
           )}
-          </>
-           }    
         </Root>
-        {!isLoading && (<BackButton onClick={handleBackToPage}>Back</BackButton>)}
+        {!isLoading && <BackButton onClick={handleBackToPage}>Back</BackButton>}
       </>
-          
     );
 }

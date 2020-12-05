@@ -2,7 +2,9 @@ import {getAuthToken} from './utils'
 const BASE_URL = 'https://student-json-api.lidemy.me'
 
 export const getPaginatePosts = (page) => {
-  return fetch(`${BASE_URL}/posts?_page=${page}&_limit=5&_sort=id&_order=desc`).then((res) => res)
+  return fetch(
+    `${BASE_URL}/posts?_page=${page}&_limit=5&_sort=id&_order=desc`
+  ).then((res) => res);
 }
 
 export const getPosts = () => {
@@ -11,7 +13,9 @@ export const getPosts = () => {
   )
 }
 export const getSinglePost = (id) => {
-  return fetch(`${BASE_URL}/posts?id=${id}`).then((res) => res.json());
+  return fetch(`${BASE_URL}/posts?id=${id}&_expand=user`).then((res) =>
+    res.json()
+  );
 };
 export const releaseNewPost = (title, body) => {
   const token = getAuthToken();
@@ -50,6 +54,7 @@ export const getMe = () => {
   })
   .then(res => res.json())
 }
+
 
 export const register = (nickname,username, password) => {
   return fetch(`${BASE_URL}/register`,{
