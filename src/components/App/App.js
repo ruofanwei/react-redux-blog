@@ -14,6 +14,7 @@ import {
   HashRouter as Router,
   Switch,
   Route,
+  Redirect
 } from "react-router-dom";
 import { getAuthToken } from "../../utils";
 
@@ -37,30 +38,27 @@ function App() {
   return (
     <Root>
       <Router>
-      <Header/>
-      <Switch>
-       <Route exact path="/">
-         <HomePage/>
-         </Route>
-          <Route path="/login">
-         <LoginPage/>
-         </Route>
-          <Route path="/register">
-         <RegisterPage/>
-         </Route>
-         <Route path="/about">
-         <AboutPage/>
-         </Route>
-         <Route path="/edit/:id">
-           {user && <EditPostPage />}
-         </Route>
-         <Route path='/posts/:id'>
-         <SinglePostPage />
+        <Header />
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
           </Route>
-        <Route path='/new-post'>
-          {user && <CreateNewPostPage />}
-         </Route>
-      </Switch>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          <Route path="/register">
+            <RegisterPage />
+          </Route>
+          <Route path="/about">
+            <AboutPage />
+          </Route>
+          <Route path="/edit/:id">{user && <EditPostPage />}</Route>
+          <Route path="/posts/:id">
+            <SinglePostPage />
+          </Route>
+          <Route path="/new-post">{user && <CreateNewPostPage />}</Route>
+          <Redirect to="/" />
+        </Switch>
       </Router>
     </Root>
   );

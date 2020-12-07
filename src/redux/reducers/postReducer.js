@@ -5,7 +5,6 @@ import {
   getPaginatePosts,
   editPost as editPostAPI,
   deletePost as deletePostAPI,
-  getUser
 } from "../../WebAPI";
 import { createPaginate } from '../../utils';
 export const postReducer = createSlice({
